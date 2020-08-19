@@ -316,46 +316,75 @@ id: 91619_SMVK_EM_objekt_1201810`,
     const title = this.title
     const text = this.text
 
-    const formData = new FormData()
-
     const inputImage = this.inputImage
+
     if (inputImage) {
+      const formData = new FormData()
       formData.append('uploadFile', this.inputImage)
-    }
+      formData.append('text', text)
+      formData.append('title', title)
+      formData.append('url', this.uploadImageUrl)
 
-    formData.append('text', text)
-    formData.append('title', title)
-    formData.append('url', this.uploadImageUrl)
-
-    const config: any = {
-      headers: {
-        'content-type': 'multipart/form-data',
-      },
-    }
-
-    const self = this
-    axios.post(u, formData, config).then((response) => {
-      const all = response.data
-      for (const key in all) {
-        const result = all[key]
-        const results = []
-        for (let i = 0; i < result.length; i++) {
-          const obj = result[i]
-          const value = this.orgRound(Number(obj.prob), 2)
-          if (value > 0) {
-            results.push({
-              name: '第' + (i + 1) + '候補',
-              label: obj.label,
-              prob: value,
-            })
-          }
-        }
-        all[key] = results
+      const config: any = {
+        headers: {
+          'content-type': 'multipart/form-data',
+        },
       }
 
-      self.results = all
-      self.loadingFlag = false
-    })
+      const self = this
+      axios.post(u, formData, config).then((response) => {
+        const all = response.data
+        for (const key in all) {
+          const result = all[key]
+          const results = []
+          for (let i = 0; i < result.length; i++) {
+            const obj = result[i]
+            const value = this.orgRound(Number(obj.prob), 2)
+            if (value > 0) {
+              results.push({
+                name: '第' + (i + 1) + '候補',
+                label: obj.label,
+                prob: value,
+              })
+            }
+          }
+          all[key] = results
+        }
+
+        self.results = all
+        self.loadingFlag = false
+      })
+    } else {
+      const formData: any = {
+        text,
+        title,
+        url: this.uploadImageUrl,
+      }
+
+      const self = this
+      axios.get(u, { params: formData }).then((response) => {
+        const all = response.data
+        for (const key in all) {
+          const result = all[key]
+          const results = []
+          for (let i = 0; i < result.length; i++) {
+            const obj = result[i]
+            const value = this.orgRound(Number(obj.prob), 2)
+            if (value > 0) {
+              results.push({
+                name: '第' + (i + 1) + '候補',
+                label: obj.label,
+                prob: value,
+              })
+            }
+          }
+          all[key] = results
+        }
+
+        self.results = all
+        self.loadingFlag = false
+      })
+    }
   }
 
   orgRound(value: number, n: number) {
