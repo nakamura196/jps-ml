@@ -344,5 +344,9 @@
     "desc_tree" : "IIIFコレクションの階層に沿ってアイテムを閲覧する。",
     "_label" : "label",
     "manifest" : "Manifest",
-    "entity" : "事物"
+    "entity" : "事物",
+    "predict" : "推測",
+    "image" : "画像",
+    "text" : "任意の文字列",
+    "reference" : "参考資料"
   }

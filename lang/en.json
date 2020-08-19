@@ -324,5 +324,9 @@
   "desc_tree" : "Browse IIIF collection tree.",
   "_label" : "label",
   "manifest" : "Manifest",
-  "entity" : "Entity"
+  "entity" : "Entity",
+  "predict" : "Predict",
+  "image" : "Image",
+  "text" : "Any Text",
+  "reference" : "Reference"
   }

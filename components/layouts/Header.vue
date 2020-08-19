@@ -12,30 +12,6 @@
 
       <v-spacer></v-spacer>
 
-      <v-btn
-        depressed
-        text
-        :to="
-          localePath({
-            name: 'image',
-          })
-        "
-      >
-        {{ $t('画像分類') }}
-      </v-btn>
-
-      <v-btn
-        depressed
-        text
-        :to="
-          localePath({
-            name: 'text',
-          })
-        "
-      >
-        {{ $t('テキスト分類') }}
-      </v-btn>
-
       <v-menu offset-y>
         <template v-slot:activator="{ on }">
           <v-btn depressed btn v-on="on">

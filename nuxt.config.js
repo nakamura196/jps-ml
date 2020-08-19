@@ -7,23 +7,10 @@ const {
   projectNameJa,
   projectNameEn,
 
-  projectFooterJa,
-  projectFooterEn,
-
   projectDescriptionJa,
   projectDescriptionEn,
-  projectKeywords,
-  ELASTIC_SEARCH_HOST,
-  ELASTIC_SEARCH_MAIN_INDEX,
-  IIIF_VIEWER_SHOW_FLAG,
-  CURATION_VIEW_SHOW_FLAG,
-  FACETS_FLAGS,
-  FACETS_LABELS,
-  SORT_LABELS,
-  SEARCH_LABELS,
+
   GOOGLE_ANALYTICS_ID,
-  SHORT_NAME,
-  SIMILAR_IMAGES_FLAG,
 } = process.env
 
 /* nuxt.config.js */
@@ -70,23 +57,10 @@ module.exports = {
     projectNameJa,
     projectNameEn,
 
-    projectFooterJa,
-    projectFooterEn,
-
     projectDescriptionJa,
     projectDescriptionEn,
-    projectKeywords,
-    ELASTIC_SEARCH_HOST,
-    ELASTIC_SEARCH_MAIN_INDEX,
-    IIIF_VIEWER_SHOW_FLAG,
-    CURATION_VIEW_SHOW_FLAG,
-    FACETS_FLAGS,
-    FACETS_LABELS,
-    SORT_LABELS,
-    SEARCH_LABELS,
+
     GOOGLE_ANALYTICS_ID,
-    SHORT_NAME,
-    SIMILAR_IMAGES_FLAG,
   },
   // serverMiddleware: ['~~/api/'],
   workbox: {
@@ -221,7 +195,7 @@ module.exports = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['@/plugins/utils.ts', '@/plugins/searchUtils.ts'],
+  plugins: ['@/plugins/utils.ts'],
   /*
    ** Nuxt.js dev-modules
    */
@@ -249,9 +223,6 @@ module.exports = {
         id: GOOGLE_ANALYTICS_ID,
       },
     ],
-    'nuxt-leaflet',
-    // ['@nuxtjs/moment', ['ja', 'en']],
-    '@nuxtjs/moment',
   ],
   i18n: {
     locales: [
